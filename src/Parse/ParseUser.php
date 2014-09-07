@@ -96,6 +96,15 @@ class ParseUser extends ParseObject
    */
   public function signUp()
   {
+    $this->signUpOnly();
+    $this->handleSaveResult(true);
+  }
+
+  /**
+   * Sign up with out login
+   */
+  public function signUpOnly()
+  {
     if (!$this->get('username')) {
       throw new ParseException("Cannot sign up user with an empty name");
     }
@@ -110,7 +119,6 @@ class ParseUser extends ParseObject
       );
     }
     parent::save();
-    $this->handleSaveResult(true);
   }
 
   /**
