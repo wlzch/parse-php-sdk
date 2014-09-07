@@ -818,38 +818,42 @@ class ParseObject implements Encodable
   /**
    * Save Object to Parse
    *
+   * @param boolean $useMasterKey
+   *
    * @return null
    */
-  public function save()
+  public function save($useMasterKey = false)
   {
     if (!$this->isDirty()) {
       return;
     }
-    static::deepSave($this);
+    static::deepSave($this, $useMasterKey);
   }
 
   /**
    * Save all the objects in the provided array
    *
    * @param array $list
+   * @param boolean $useMasterKey
    *
    * @return null
    */
-  public static function saveAll($list)
+  public static function saveAll($list, $useMasterKey = false)
   {
-    static::deepSave($list);
+    static::deepSave($list, $useMasterKey);
   }
 
   /**
    * Save Object and unsaved children within.
    *
    * @param $target
+   * @param boolean $useMasterKey
    *
    * @return null
    *
    * @throws ParseException
    */
-  private static function deepSave($target)
+  private static function deepSave($target, $useMasterKey = false)
   {
     $unsavedChildren = array();
     $unsavedFiles = array();
@@ -912,11 +916,11 @@ class ParseObject implements Encodable
       if (count($requests) === 1) {
         $req = $requests[0];
         $result = ParseClient::_request($req['method'],
-          $req['path'], $sessionToken, json_encode($req['body']));
+          $req['path'], $sessionToken, json_encode($req['body']), $useMasterKey);
         $batch[0]->mergeAfterSave($result);
       } else {
         $result = ParseClient::_request('POST', '/1/batch', $sessionToken,
-          json_encode(array("requests" => $requests)));
+          json_encode(array("requests" => $requests)), $useMasterKey);
 
         $errorCollection = array();
 
