@@ -1,5 +1,5 @@
 {
-    "name": "wlzch/php-sdk",
+    "name": "wlzch/parse-php-sdk",
     "description": "Parse PHP SDK Fork",
     "keywords": ["parse", "sdk"],
     "type": "library",
