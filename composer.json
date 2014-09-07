@@ -1,6 +1,6 @@
 {
-    "name": "parse/php-sdk",
-    "description": "Parse PHP SDK",
+    "name": "wlzch/php-sdk",
+    "description": "Parse PHP SDK Fork",
     "keywords": ["parse", "sdk"],
     "type": "library",
     "homepage": "https://github.com/parseplatform/parse-php-sdk",
