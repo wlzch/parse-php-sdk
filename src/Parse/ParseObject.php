@@ -818,7 +818,7 @@ class ParseObject implements Encodable
   /**
    * Save Object to Parse
    *
-   * @param boolean $useMasterKey
+   * @param bool   $useMasterKey Whether to use the Master Key.
    *
    * @return null
    */
@@ -834,7 +834,7 @@ class ParseObject implements Encodable
    * Save all the objects in the provided array
    *
    * @param array $list
-   * @param boolean $useMasterKey
+   * @param bool   $useMasterKey Whether to use the Master Key.
    *
    * @return null
    */
@@ -847,7 +847,7 @@ class ParseObject implements Encodable
    * Save Object and unsaved children within.
    *
    * @param $target
-   * @param boolean $useMasterKey
+   * @param bool   $useMasterKey Whether to use the Master Key.
    *
    * @return null
    *
