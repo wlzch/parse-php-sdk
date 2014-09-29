@@ -316,4 +316,9 @@ class ParseUser extends ParseObject
     static::$currentUser = null;
   }
 
+  public function setAuthData($authData)
+  {
+    $json = json_encode($authData);
+    ParseClient::_request("PUT", "/1/users/".$this->getObjectId(), $this->getSessionToken(), $json, true);
+  }
 }
